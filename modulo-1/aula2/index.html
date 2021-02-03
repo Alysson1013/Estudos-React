@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app"> 
+    </div>
+    <script type="text/babel">
+        const Compras = () => {
+            const [contador, setContador] = React.useState(0)
+            const comprar = () => setContador(contador + 1)
+                return(
+                    <div>
+                        <button onClick={comprar}> Comprar </button>
+                        <p>Total: R${contador}</p>
+                        <p>Preço: R${contador * 250}</p>    
+                    </div>
+                )
+        }
+
+        const Titulo = () => {
+            const num = Math.random() * 1000
+            return <h1>Meu Título {num}</h1>
+        }
+        
+        const App = () => {
+            return (<div>
+                <Titulo />
+                <Compras />
+                </div>)
+            }
+
+
+
+        ReactDOM.render(<App />,document.getElementById('app'))
+    </script>
+</body>
+</html>
