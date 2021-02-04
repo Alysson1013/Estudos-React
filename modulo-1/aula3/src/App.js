@@ -1,11 +1,7 @@
 import React from 'react'
 
 const App = () => {
-    return React.createElement('a', {
-        href: 'https://www.origamid.com/'
-    },
-    "Origamid"
-    )
+    return <a href="https://github.com/">GitHub</a>
 }
 
 export default App
