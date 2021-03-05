@@ -1,27 +1,28 @@
 import React from 'react';
 
 const  App = () => {
-
-  const [contar, setContar] = React.useState(1)
-  const [items, setItems] = React.useState(["Item 1"])
+  const [carrinho, setCarrinho] = React.useState(0)
+  const [notificacao, setNotificacao] = React.useState(null)
+  const timeoutRef = React.useRef()
 
   function handleClick(){
-    setContar(contar + 1)
-    setItems([...items, `item ${contar + 1}`])
-  } 
-    
-  
+    setCarrinho(carrinho + 1)
+    setNotificacao('Item Adicionado ao Carrinho')
+
+    clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => {
+      setNotificacao(null)
+    }, 2000)
+  }
 
   return (
     <div>
-      <ul>
-        {items.map(item => (
-          <li key={item}>
-            {item}
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleClick}>{contar}</button>
+      <p>
+        {notificacao}
+      </p>
+      <button onClick={handleClick}>
+        Adicionar ao Carrinho {carrinho}
+      </button>
     </div>
   );
 }
