@@ -1,40 +1,24 @@
 import React from 'react';
 
 const  App = () => {
-  const [form, setForm] = React.useState({
-    nome: '',
-    email: ''
-  })
-   
-  function handleSubmit(event){
-    event.preventDefault()
-  }
-
-  function handleChange({target}){
-    const {id, value} = target
-
-    setForm({...form, [id]: value})
-  }
+  const [textarea, setTextarea] = React.useState('')
+  const [select, setSelect] = React.useState('')
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="nome">Nome</label>
-      <input 
-        id="nome"
-        type="text"
-        value={form.nome} 
-        onChange={handleChange}
+    <form>
+      <textarea
+        value={textarea}
+        onChange={(({target}) => setTextarea(target.value))}
+        rows="5"
       />
-      <label htmlFor="email">Email</label>
-      <input 
-        id="email"
-        type="email"
-        value={form.email} 
-        onChange={handleChange}
-      />
-      <button>Enviar</button>
+      <select value={select} id="produtos" onChange={({target}) => setSelect(target.value)}>
+        <option disabled value="">Selecione</option>
+        <option value="notebook">Notebook</option>
+        <option value="smartphone">Smartphone</option>
+        <option value="tablet">Tablet</option>
+      </select>
+      {select}
     </form>
-    
   );
 }
 
