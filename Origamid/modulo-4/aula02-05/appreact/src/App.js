@@ -3,6 +3,11 @@ import React from 'react';
 const  App = () => {
   const [textarea, setTextarea] = React.useState('')
   const [select, setSelect] = React.useState('')
+  const [produto, setProduto] = React.useState('')
+
+  function handleChange({target}){
+    setProduto(target.value)
+  }
 
   return (
     <form>
@@ -17,7 +22,15 @@ const  App = () => {
         <option value="smartphone">Smartphone</option>
         <option value="tablet">Tablet</option>
       </select>
-      {select}
+      <label>
+        <input type="radio" name="produto" value="smartphone" onChange={handleChange} checked={produto === 'smartphone'} />
+        Smartphone
+      </label>
+      <label>
+        <input type="radio" name="produto" value="notebook" onChange={handleChange} checked={produto === 'notebook'} />
+        Notebook
+      </label>
+      {produto}
     </form>
   );
 }
