@@ -1,7 +1,8 @@
 import React from 'react';
 
+const coresArray = ['azul', 'roxo', 'laranja', 'verde', 'vermelho', 'cinza'];
+
 const  App = () => {
-  const [termos, setTermos] = React.useState(false)
   const [cores, setCores] = React.useState(['vermelho'])
 
   function handleChange({target}){
@@ -16,36 +17,17 @@ const  App = () => {
 
   return (
     <form>
-      {termos && <p>Aceitou os Termos</p>}
-      <label>
-        <input type="checkbox" 
-          value="Termos" 
-          checked={termos} 
-          onChange={({target})=> {
-            setTermos(target.checked)
-          } 
-        } />
-        Aceito os Termos
-      </label>
-      <br />
-      <label>
+      {coresArray.map(cor => (
+        <label key={cor}>
         <input 
           type="checkbox"
-          value="vermelho"
-          checked={checkColor("vermelho")}
+          value= {cor}
+          checked={checkColor(cor)}
           onChange={handleChange}
         />
-        Vermelho
+        {cor}
       </label>
-      <label>
-        <input 
-          type="checkbox"
-          value="azul"
-          checked={checkColor('azul')}
-          onChange={handleChange}
-        />
-        Azul
-      </label>
+      ))}
     </form>
     
   );
